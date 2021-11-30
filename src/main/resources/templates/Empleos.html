@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head th:insert="menu.html :: head">
+	<meta charset="UTF-8">
+	<title>Empleos</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+		integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+	<link rel="stylesheet" th:href="@{/resources/alertifyjs/css/alertify.css}">
+	<link rel="stylesheet" th:href="@{/resources/alertifyjs/css/alertify.min.css}">
+</head >
+
+<body id="page-top">
+	
+	<th:block th:replace="menu.html :: header">
+	</th:block>
+	<br><br><br><br><br>
+	<div class="container">
+		<div class="card">
+			<div class="card-header">
+				<h5 class="fect">203-2021</h5>
+				<p class="fecha1">
+					Fecha de Publicación: <span class="fecha">21/10/2021</span>
+				</p>
+				<p class="fecha1">
+					Fecha de Postulacion: <span class="fecha">26/10/2021</span>
+				</p>
+				<p class="fecha1">
+					Fecha Fin de Postulación: <span class="fecha"> 26/10/2021
+						04:30 PM</span>
+				</p>
+			</div>
+			<div class="card-body">
+				<div class="UNIDAD">
+					<span class="fect1">Unidad Organica: </span>
+					<p class="trabajo">UNIDAD DE PLANIFICACIÓN DE RECURSOS HUMANOS
+						- OFICINA GENERAL DE RECURSOS HUMANOS</p>
+
+				</div>
+				<div class="UNIDAD">
+					<span class="fect1">Codigo:</span>
+					<p class="trabajo1">203-2021</p>
+					<a type="button" class="btn btn-primary etiqueta"
+						th:href="@{/resources/pdf/CAS2032021UNAESPECIALISTA.pdf}" download="UNAESPECIALISTA.pdf"><img
+							th:src="@{/resources/images/pdf.png}" id="imagen"></a>
+				</div>
+				<div class="UNIDAD">
+					<span class="fect12">Puesto: </span>
+					<p class="trabajo12">UN(A) ESPECIALISTA EN PLANIFICACIÓN DE
+						RECURSOS HUMANOS</p>
+
+				</div>
+				<div class="UNIDAD">
+					<span class="fect1">Comunicados: </span>
+					<div class="error">
+						<a class="trabajo123" th:href="@{/resources/pdf/RSG 028-2020106259.pdf}"
+							download="RSG 028-2020106259.pdf">Comunicado</a> <a class="trabajo123"
+							th:href="@{/resources/pdf/Protocolo seleccion personal CAS - COVID-19111258.pdf}"
+							download="Protocolo seleccion personal CAS - COVID-19111258.pdf">Comunicado</a>
+						<a class="trabajo123" th:href="@{/resources/pdf/COMUNICADO PROCESOS PUBLICADOS.pdf}"
+							download="Comunicado Procesos Publicados.pdf">Comunicado</a>
+					</div>
+					<button type="submit" class="btn btn-info form-control cv" data-toggle="modal"
+						data-target="#staticBackdrop">Enviar
+						CV</button>
+				</div>
+
+
+
+			</div>
+		</div>
+	</div>
+	<br>
+	<div class="container">
+		<div class="card">
+			<div class="card-header">
+				<h5 class="fect">202-2021</h5>
+				<p class="fecha1">
+					Fecha de Publicación: <span class="fecha">21/10/2021</span>
+				</p>
+				<p class="fecha1">
+					Fecha de Postulacion: <span class="fecha">26/10/2021</span>
+				</p>
+				<p class="fecha1">
+					Fecha Fin de Postulación: <span class="fecha"> 29/12/2021
+						04:30 PM</span>
+				</p>
+			</div>
+			<div class="card-body">
+				<div class="UNIDAD">
+					<span class="fect1">Unidad Organica: </span>
+					<p class="trabajo">EGRESADOS DE CARRERAS TECNICA DE SISTEMAS,
+						INFORMATICA, SOFTWARE O AFINES.</p>
+
+				</div>
+				<div class="UNIDAD">
+					<span class="fect1">Codigo:</span>
+					<p class="trabajo1">203-2021</p>
+					<a type="button" class="btn btn-primary etiqueta"
+						th:href="@{/resources/pdf/CAS2032021UNAESPECIALISTA.pdf}" download="UNAESPECIALISTA.pdf"><img
+							th:src="@{/resources/images/pdf.png}" id="imagen"></a>
+				</div>
+				<div class="UNIDAD">
+					<span class="fect12">Puesto: </span>
+					<p class="trabajo12">UN(A) ESPECIALISTA EN PLANIFICACIÓN DE
+						SISTEMAS INFORMATICOS.</p>
+
+				</div>
+				<div class="UNIDAD">
+					<span class="fect1">Comunicados: </span>
+					<div class="error">
+						<a class="trabajo123" th:href="@{/resources/pdf/RSG 028-2020106259.pdf}"
+							download="RSG 028-2020106259.pdf">Comunicado</a> <a class="trabajo123"
+							th:href="@{/resources/pdf/Protocolo seleccion personal CAS - COVID-19111258.pdf}"
+							download="Protocolo seleccion personal CAS - COVID-19111258.pdf">Comunicado</a>
+						<a class="trabajo123" th:href="@{/resources/pdf/COMUNICADO PROCESOS PUBLICADOS.pdf}"
+							download="Comunicado Procesos Publicados.pdf">Comunicado</a>
+					</div>
+					<button type="submit" class="btn btn-info form-control cv" data-toggle="modal"
+						data-target="#staticBackdrop">Enviar
+						CV</button>
+				</div>
+
+
+
+			</div>
+		</div>
+	</div>
+
+	<!-- Modal -->
+	<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
+		aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		<div class="modal-dialog " style="max-width: 900px;">
+			<div class="modal-content">
+				<div class="modal-header titulos">
+					<h5 class="indicaciones" id="staticBackdropLabel">Lea las
+						indicaciones que se le proporciona antes de enviar su cv.</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form th:action="@{/Empleos/registro}" method="post" enctype="multipart/form-data">
+						<div class="row">
+							<div class="col">
+								<label>Nombres Completos</label> <input type="text" class="form-control" name="nombre">
+							</div>
+							<div class="col">
+								<label> Apellido Paterno</label> <input type="text" class="form-control"
+									name="apePaterno">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								<label> Apellido Materno </label> <input type="text" class="form-control"
+									name="apeMaterno">
+							</div>
+							<div class="col">
+								<label>Correo</label> <input type="email" class="form-control" name="correo">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-6">
+								<label for="">Celular</label> <input type="text" class="form-control" name="celular">
+							</div>
+							<div class="col-sm-6">
+								<label for="">Carge su CV.</label> <input type="file" name="archivos">
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<input type="hidden" value="1" name="estadosolicitante">
+						</div>
+						<br>
+						<div class="row text-center">
+							<div class="col-sm-12">
+								<button type="submit" class="btn btn-success">Enviar</button>
+							</div>
+						</div>
+					</form>
+
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<br>
+	<th:block th:replace="menu.html :: footer">
+	</th:block>
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+		integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"
+		integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2"
+		crossorigin="anonymous"></script>
+
+	<script th:src="@{/resources/alertifyjs/alertify.js}"></script>
+	<script th:src="@{/resources/alertifyjs/alertify.min.js}"></script>
+
+	<script th:inline="javascript" th:if="${MENSAJE!=null}">
+		let msg;
+		msg = /*[[${MENSAJE}]]*/null;
+
+		toastr.success(msg, toastr.options = {
+			"timeOut": "2000",
+			"positionClass ": " toast-top-right ",
+		});
+	</script>
+</body>
+
+</html>

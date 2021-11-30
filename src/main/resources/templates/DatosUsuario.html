@@ -1,0 +1,122 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:insert="menu.html :: head">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Datos Personales</title>
+
+
+</head >
+
+<body id="page-top">
+	<th:block th:replace="menu.html :: header">
+	</th:block>
+	<br>
+	<div class="contact_form">
+
+		<div class="formulario">
+			<h1>Datos Personales</h1>
+			<h3>Actualiza tus datos personales.</h3>
+
+		
+			<form th:action="@{/datos/actualizar}" method="POST">
+				<!--  <div th:each="bean:${usuarios}">-->
+				<input type="hidden" th:value="${session.usuario.CodUsuario}"
+					name="codigo" id="idcodigo" required>
+
+				<p>
+					<label for="nombre" class="colocar_nombre">Nombre <span
+						class="obligatorio">*</span>
+					</label> <input type="text" th:value="${session.usuario.NomUser}"
+						name="nombre" id="idnombre" required>
+				</p>
+
+				<p>
+					<label for="apellidopaterno" class="colocar_nombre">Apellido
+						Paterno<span class="obligatorio">*</span>
+					</label> <input type="text" th:value="${session.usuario.ApePaterno}"
+						name="apePaterno" id="idapePaterno" required>
+				</p>
+
+				<p>
+					<label for="apellidoMaterno" class="colocar_nombre">Apellido
+						Materno<span class="obligatorio">*</span>
+					</label> <input type="text" th:value="${session.usuario.ApeMaterno}"
+						name="apeMaterno" id="idapeMaterno" required>
+				</p>
+
+				<p>
+					<input type="hidden" th:value="${session.usuario.DniUser}"
+						name="dni" id="iddni" required>
+				</p>
+
+				<p>
+					<label for="email" class="colocar_email">Correo<span
+						class="obligatorio">*</span>
+					</label> <input type="email" th:value="${session.usuario.Correo}"
+						name="correo" id="idcorreo" required>
+				</p>
+
+				<p>
+					
+					</label> <input type="hidden" th:value="${session.usuario.Password}"
+						name="password" id="idpassword" required>
+				</p>
+
+				<p>
+					<label for="telefone" class="colocar_telefono">Teléfono </label> <input
+						type="tel" th:value="${session.usuario.Celular}" name="telefono"
+						id="idtelefono">
+				</p>
+
+				<p>
+					<label for="fecha" class="colocar_fecha">Fecha de
+						nacimiento </label> <input type="date"
+						th:value="${session.usuario.FechNacimiento}" name="fecha"
+						id="idfecha">
+				</p>
+
+				<p>
+					<label for="asunto" class="colocar_asunto">Genero <span
+						class="obligatorio">*</span>
+					</label> <select name="genero" id="idgenero">
+						<option th:text="${session.usuario.tbGenero.NomGenero}">
+						<option th:each="bean:${genero}" th:utext="${bean.NomGenero}"
+							th:value="${bean.CodGenero}">
+					</select>
+				</p>
+
+				<input type="hidden" th:value="${session.usuario.rol.CodRol}"
+					name="rol" id="idcodigo" required>
+				<div>
+					<button type="submit" name="enviar_formulario" id="enviar">
+						<p>Enviar</p>
+
+					</button>
+
+				</div>
+				<p class="aviso">
+					<span class="obligatorio"> * </span>los campos son obligatorios.
+				</p>
+
+			</form>
+		</div>
+	</div>
+	<br>
+
+	
+	<th:block th:replace="menu.html :: footer">
+	</th:block>
+	
+	<script th:inline="javascript" th:if="${MENSAJE!=null}">
+		let msg;
+		msg = /*[[${MENSAJE}]]*/null;
+
+		toastr.success(msg, toastr.options = {
+			"timeOut" : "2000",
+			"positionClass " : " toast-top-right ",
+		});
+	</script>
+
+</body>
+
+</html>

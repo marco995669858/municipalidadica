@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:insert="menu.html :: head">
+	<meta charset="ISO-8859-1">
+	<title>Administrar Roles</title>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css"
+		integrity="sha512-xA6Hp6oezhjd6LiLZynuukm80f8BoZ3OpcEYaqKoCV3HKQDrYjDE1Gu8ocxgxoXmwmSzM4iqPvCsOkQNiu41GA=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+
+<body id="page-top">
+	<th:block th:replace="menu.html :: header">
+	</th:block>
+	<br><br><br>
+	<div class="container">
+		<br>
+		<div class="mt-5">
+			<h1 class="text-center">Agregar Roles</h1>
+		</div>
+		<div>
+			<button class="btn btn-primary" id="idnuevo" data-toggle="modal" data-target="#modalRol"
+				style="width: 180px;">
+				<i class="fas fa-plus-circle"></i> Agregar Nuevo
+			</button>
+		</div>
+		<div class="mt-5">
+			<table id="tableRol" class="table table-striped table-bordered" style="width: 100%">
+				<thead>
+					<tr>
+						<th class="d-none">Codigo Usuario</th>
+						<th class="text-center">Rol</th>
+						<th class="d-none">Codigo Estado</th>
+						<th class="text-center">Estado</th>
+						<th class="text-center">Editar Rol</th>
+						<th class="text-center">Eliminar rol</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="bean:${r}">
+						<td class="d-none" th:text="${bean.CodRol}"></td>
+						<td class="text-center" th:text="${bean.NomRol}"></td>
+						<td class="d-none" th:text="${bean.estado.codEstado}"></td>
+						<td class="text-center" th:text="${bean.estado.nomEstado}"></td>
+						<td class="text-center"><a type="button" id="idEditar" data-toggle="modal"
+								data-target="#modalRol"><i class="fas fa-undo-alt"></i></a></td>
+						<td class="text-center"><a type="button" id="idelimi"><i class="fas fa-eraser"></i></a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<!-- Modal -->
+		<div class="modal fade" id="modalRol" tabindex="-1" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content" id="idcontene">
+					<div class="modal-header">
+						<h5 class="modal-title" id="staticBackdropLabel">Nuevos Roles</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<form id="idRegistrar" th:action="@{/rol/Registrar}" method="POST">
+							<div class="form-group">
+								<input type="hidden" class="form-control" value="0" id="idrol" name="rol"
+									readonly="readonly">
+							</div>
+							<div class="form-group">
+								<label for="rol" class="col-form-label">Agregar Rol:</label> <input type="text"
+									class="form-control" id="idNombre" name="nombre" required>
+							</div>
+							<div class="form-group">
+								<label for="" class="col-form-label">Estado</label> <select class="form-control"
+									id="idEstado" name="estado">
+									<option value=" ">[Seleccione un estado]</option>
+									<option th:each="bean:${e}" th:utext="${bean.nomEstado}"
+										th:value="${bean.codEstado}">
+								</select>
+							</div>
+							<div class="text-center">
+								<button type="button" class="btn btn-secondary" id="idclose" data-dismiss="modal"
+									style="width: 80px;">
+									<i class="fas fa-store-alt-slash"></i>
+								</button>
+								<button type="submit" class="btn btn-primary" style="width: 80px;">
+									<i class="fas fa-fighter-jet"></i>
+								</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<form id="idEliminar" th:action="@{/rol/Eliminar}" method="post">
+				<input type="text" class="form-control" id="idcodigo" name="rol" readonly="readonly">
+			</form>
+		</div>
+	</div>
+	<th:block th:replace="menu.html :: footer">
+	</th:block>
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+	<script th:src="@{/resources/js/Rol.js}"></script>
+	<script>
+		$(document).ready(function () {
+			$('#tableRol').DataTable();
+		});
+	</script>
+
+	<script th:inline="javascript" th:if="${MENSAJE!=null}">
+		let msg;
+		msg = /*[[${MENSAJE}]]*/null;
+
+		toastr.success(msg, toastr.options = {
+			"timeOut": "2000",
+			"positionClass ": " toast-top-right ",
+		});
+	</script>
+</body>
+
+</html>

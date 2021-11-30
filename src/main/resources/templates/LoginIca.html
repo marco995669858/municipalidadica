@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Innicar Sessión</title>
+<link rel="stylesheet" th:href="@{/resources/css1/LoginIca.css}">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+<link rel="stylesheet"
+	th:href="@{/resources/alertifyjs/css/alertify.css}">
+<link rel="stylesheet"
+	th:href="@{/resources/alertifyjs/css/alertify.min.css}">
+
+</head>
+
+<body>
+
+	<div class="container">
+
+		<div class="login-box">
+			<img th:src="@{/resources/images/ica-escudo.jpg}" class="avatar"
+				alt="Avatar Image">
+			<h1>Inicio de Sessión</h1>
+			<div class="alert alert-danger" th:if="${param.error}" style="width: 280px;height: 50px;" >Usuario
+				y/o Clave son incorrectas</div>
+			<div class="alert alert-success alert-dismissible fade show" role="alert" th:if="${param.logout}" style="width: 270px; height: 50px;">Sessión
+				cerrada</div>
+			<div id="error"></div>
+			<form action="login" method="post" onsubmit="return Login()">
+				<!-- USERNAME INPUT -->
+				<label>Usuario</label> <input type="email" name="username"
+					placeholder="Ingrese el nombre de usuario" id="idemail" required="required" value="marcos995669858@gmail.com">
+				<!-- PASSWORD INPUT -->
+				<label>Contraseña</label> <input type="password" name="password"
+					placeholder="Ingrese una contrase�a" id="idcontrasenia" required="required" value="Marc9956">
+				<div class="text-center">
+					<button type="submit">Iniciar Sessión</button>
+				</div>
+				<br>
+				<div class="text-end">
+					<a th:href="@{/registrar}">No tienes una cuenta?</a>
+				</div>
+			</form>
+		</div>
+
+	</div>
+
+
+	<script
+		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

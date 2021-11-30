@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:insert="menu.html :: head">
+	<meta charset="ISO-8859-1">
+	<title>Buzon de entrada</title>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css"
+		integrity="sha512-xA6Hp6oezhjd6LiLZynuukm80f8BoZ3OpcEYaqKoCV3HKQDrYjDE1Gu8ocxgxoXmwmSzM4iqPvCsOkQNiu41GA==">
+</head>
+
+<body id="page-top">
+	<th:block th:replace="menu.html :: header">
+	</th:block>
+	<br><br>
+	<br>
+	<br>
+	<div class="container">
+
+		<h3 class="text-center mt-4" style="font-size: 30px;">LISTA DE SOLICITUDES PENDIENTES</h3>
+
+		<table class="table table-striped table-bordered mt-5" id="tablaBuzon">
+			<thead>
+				<tr>
+					<th class="d-none">C�digo</th>
+					<th class="text-center">Nombre</th>
+					<th class="text-center">Paterno</th>
+					<th class="text-center">Materno</th>
+					<th class="text-center">Correo</th>
+					<th class="text-center">Celular</th>
+					<th class="text-center">Nombre PDF</th>
+					<th class="d-none">Codigo Solicitante</th>
+					<th class="text-center">Estado</th>
+					<th class="text-center">PDF</th>
+					<th></th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody class="text-center">
+				<tr th:each="bean:${solicitante}">
+					<td class="d-none" th:text="${bean.codSolicitante}"></td>
+					<td th:text="${bean.nomSolicitante}"></td>
+					<td th:text="${bean.PaternoSolicitante}"></td>
+					<td th:text="${bean.MaternoSolicitante}"></td>
+					<td th:text="${bean.CorreoSolicitante}"></td>
+					<td th:text="${bean.CelularSolicitante}"></td>
+					<td th:text="${bean.nomArchivo}" style="font-size: 10px;"></td>
+					<td class="d-none" th:text="${bean.estadoSolicitud.codsolicitud}"></td>
+					<td th:text="${bean.estadoSolicitud.nombreSolicitud}"></td>
+					<td>
+						<a class="etiqueta" target="_blank"
+							th:href=@{/buzon/descargar.pdf(nombrepdf=${bean.nomArchivo})} ><img
+								th:src="@{/resources/images/pdf.png}" id="imagen" width="40px;"></a>
+					</td>
+					<td><a  id="actualizar" data-toggle="modal"
+							data-target="#modalSolicitante" style="font-size: 30px;"><i
+								class="fas fa-cloud-upload-alt"></i></a></td>
+					<td><a  id="ideliminarSolicitante" style="font-size: 30px;"><i class="fas fa-trash-alt"></i></a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<!-- Para el modal del actualizar solicitante -->
+
+		<!-- Modal -->
+		<div class="modal fade" id="modalSolicitante" data-backdrop="static" data-keyboard="false" tabindex="-1"
+			aria-labelledby="staticBackdropLabel" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" style="max-width: 1000px;">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="staticBackdropLabel">Actualizar
+							Solicitante</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<form th:action="@{/buzon/actualizar}" id="Actualizar" method="POST">
+							<div class="row">
+								<div class="col">
+									<input type="hidden" class="form-control" id="idcodigo" name="codigo">
+								</div>
+							</div>
+							<br>
+							<div class="row">
+								<div class="col">
+									<input type="text" class="form-control" placeholder="Nombre Completo" id="idnombre"
+										name="nombre">
+								</div>
+								<div class="col">
+									<input type="text" class="form-control" placeholder="Apellido paterno"
+										id="idpaterno" name="paterno">
+								</div>
+							</div>
+							<br>
+							<div class="row">
+								<div class="col">
+									<input type="text" class="form-control" placeholder="Apellido materno"
+										id="idmaterno" name="materno">
+								</div>
+								<div class="col">
+									<input type="text" class="form-control" placeholder="Correo del Solicitante"
+										id="idcorreo" name="correo">
+								</div>
+							</div>
+							<br>
+							<div class="row">
+								<div class="col">
+									<input type="text" class="form-control" placeholder="Celular" id="idcelular"
+										name="celular">
+								</div>
+								<div class="col-md-6">
+									<select class="form-control" id="idestado" name="estado">
+										<option value=" ">[Seleccione un proceso]</option>
+										<option th:each="bean:${estado}" th:utext="${bean.nombreSolicitud}"
+											th:value="${bean.codsolicitud}">
+									</select>
+								</div>
+							</div>
+							<br>
+							<div class="row">
+								<div class="col-md-6">
+									<input type="hidden" class="form-control" id="nuevocv" name="nuevocv">
+								</div>
+							</div>
+							<div class="modal-footer">
+								<button type="submit" class="btn btn-primary" id="btnActualizar">Actualizar</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<form id="idEliminar" th:action="@{/buzon/Eliminar}" method="post">
+			<input type="hidden" class="form-control" id="idcodigoeliminar" name="solicitante" readonly="readonly">
+		</form>
+	</div>
+
+<br><br><br><br><br>
+	<th:block th:replace="menu.html :: footer">
+	</th:block>
+
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<script th:src="@{/resources/js/Buzon.js}"></script>
+
+	<script th:inline="javascript" th:if="${MENSAJE!=null}">
+		let msg;
+		msg = /*[[${MENSAJE}]]*/null;
+
+		toastr.success(msg, toastr.options = {
+			"timeOut": "2000",
+			"positionClass ": " toast-top-right ",
+		});
+	</script>
+
+	<script>
+		$(document).on("click", ".close", function () {
+			//limpiar controles del formulario
+			$('#Actualizar').trigger("reset");
+			//resetear validaciones
+			$('#Actualizar').data("bootstrapValidator").resetForm(true);
+
+		});
+
+
+	</script>
+</body>
+
+</html>
